@@ -1,36 +1,61 @@
 @import "tailwindcss";
 
 :root {
-  --background: #fafafa;
-  --foreground: #09090b;
+  --bg-color: #faf0e6; /* Linen/Beige */
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --color-background: var(--bg-color);
+  --color-foreground: #000000;
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
   
-  --animate-blob: blob 7s infinite;
+  --animate-marquee: marquee 10s linear infinite;
+  
+  --color-neo-yellow: #ffde59;
+  --color-neo-mint: #00f0ff;
+  --color-neo-pink: #ff66c4;
+  --color-neo-purple: #cb6ce6;
+  --color-neo-green: #7fe881;
 }
 
-@keyframes blob {
-  0% { transform: translate(0px, 0px) scale(1); }
-  33% { transform: translate(30px, -50px) scale(1.1); }
-  66% { transform: translate(-20px, 20px) scale(0.9); }
-  100% { transform: translate(0px, 0px) scale(1); }
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
 }
 
 @media (prefers-color-scheme: dark) {
+  /* 네오브루탈리즘 특성상 밝고 쨍하게 유지하거나 극단적인 대비를 주지만,
+     이번 디자인에선 일관적인 팝아트 감성을 위해 다크모드도 밝게 고정합니다. */
   :root {
-    --background: #09090b;
-    --foreground: #fafafa;
+    --bg-color: #faf0e6;
   }
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background: var(--bg-color);
+  color: #000000;
   font-family: var(--font-sans), Arial, Helvetica, sans-serif;
   overflow-x: hidden;
+  /* Subtle polka dot pattern */
+  background-image: radial-gradient(rgba(0,0,0,0.15) 2px, transparent 2px);
+  background-size: 24px 24px;
+}
+
+/* Neobrutalism Utilities */
+.neo-box {
+  border: 4px solid #000000;
+  box-shadow: 6px 6px 0px 0px #000000;
+  transition: all 0.2s ease-out;
+}
+
+.neo-box-hover:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 9px 9px 0px 0px #000000;
+}
+
+.neo-box-hover:active {
+  transform: translate(4px, 4px);
+  box-shadow: 2px 2px 0px 0px #000000;
+  transition: all 0.05s ease-out;
 }

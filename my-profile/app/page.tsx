@@ -1,120 +1,136 @@
 "use client";
 
 import Image from "next/image";
-import { motion, Variants } from "framer-motion";
-import { Mail, Code2, Terminal, Cpu } from "lucide-react";
+import { motion } from "framer-motion";
+import { Mail, Code2, Terminal, Cpu, ArrowRight } from "lucide-react";
 
 export default function Home() {
-  const containerVariants: Variants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2
-      }
-    }
-  };
-
-  const itemVariants: Variants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        type: "spring",
-        stiffness: 100,
-        damping: 10
-      }
-    }
-  };
-
   return (
-    <div className="relative min-h-screen flex items-center justify-center overflow-hidden bg-slate-50 dark:bg-[#09090b] text-slate-900 dark:text-zinc-50 p-6 selection:bg-purple-500/30">
+    <div className="min-h-screen flex flex-col pt-6 px-4 md:px-10 max-w-7xl mx-auto selection:bg-neo-pink selection:text-white pb-20">
       
-      {/* Background Animated Blobs */}
-      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-500/20 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob dark:bg-purple-600/20"></div>
-        <div className="absolute top-1/3 right-1/4 w-96 h-96 bg-blue-500/20 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob dark:bg-blue-600/20" style={{ animationDelay: '2s' }}></div>
-        <div className="absolute -bottom-32 left-1/3 w-96 h-96 bg-pink-500/20 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob dark:bg-pink-600/20" style={{ animationDelay: '4s' }}></div>
+      {/* Navbar (Top bar) */}
+      <motion.nav 
+        initial={{ y: -50, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ type: "spring", stiffness: 100 }}
+        className="neo-box bg-white flex justify-between items-center px-6 py-4 rounded-xl mb-10 w-full"
+      >
+        <span className="font-extrabold text-2xl tracking-tighter">HAESOO.KIM</span>
+        <button className="neo-box neo-box-hover bg-neo-yellow text-black font-bold py-2 px-6 rounded-lg uppercase tracking-wider text-sm flex items-center gap-2">
+          Let's Talk <ArrowRight size={16} strokeWidth={3} />
+        </button>
+      </motion.nav>
+
+      {/* Main Grid Layout */}
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-6 w-full">
+        
+        {/* Hero Section */}
+        <motion.div 
+          initial={{ x: -50, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ type: "spring", delay: 0.1 }}
+          className="md:col-span-8 neo-box bg-neo-purple rounded-2xl p-8 md:p-12 flex flex-col justify-center"
+        >
+          <div className="inline-block bg-white text-black font-black uppercase px-4 py-1 rounded-md border-2 border-black w-fit mb-6 shadow-[3px_3px_0px_rgba(0,0,0,1)] text-sm md:text-base">
+            Front-end Explorer 🚀
+          </div>
+          <h1 className="text-5xl md:text-8xl font-black mb-4 uppercase leading-[0.9] tracking-tighter text-black [text-shadow:4px_4px_0px_#fff]">
+            HELLO, <br /> I'M HAESOO.
+          </h1>
+          <p className="text-xl md:text-2xl font-bold mt-4 bg-white/20 p-4 rounded-xl border-l-[6px] border-black text-black">
+            바이브 코딩 앤 크리에이티브 디자인 
+          </p>
+        </motion.div>
+
+        {/* Profile Avatar Card */}
+        <motion.div 
+          initial={{ x: 50, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ type: "spring", delay: 0.2 }}
+          className="md:col-span-4 neo-box bg-neo-mint rounded-2xl p-6 flex flex-col items-center justify-center group"
+        >
+          <div className="relative w-48 h-48 md:w-full md:h-full min-h-[250px] rounded-full border-4 border-black overflow-hidden bg-neo-yellow shadow-[4px_4px_0px_#000]">
+            <Image 
+              src="/neo_avatar.png"
+              alt="Pop art Avatar"
+              fill
+              className="object-cover group-hover:scale-110 transition-transform duration-300"
+            />
+          </div>
+        </motion.div>
+
+        {/* About Card */}
+        <motion.div 
+          initial={{ y: 50, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ type: "spring", delay: 0.3 }}
+          className="md:col-span-7 neo-box bg-white rounded-2xl p-8 flex flex-col"
+        >
+          <h2 className="text-3xl font-black uppercase mb-4 flex items-center gap-2 border-b-4 border-black pb-2">
+            Who am I <span className="inline-block w-8 h-8 rounded-full bg-neo-pink border-2 border-black"></span>
+          </h2>
+          <p className="text-lg md:text-xl font-medium leading-relaxed mt-4">
+            웹 기술과 아트의 경계를 사랑하는 대학생입니다. 
+            <strong>정형화된 틀을 깨고</strong> 개성 넘치는 사용자 경험을 구현하는 것에 항상 열정을 쏟고 있어요. 
+            문제를 해결하는 코드 이상의 <span className="bg-neo-yellow px-1 border border-black shadow-[1px_1px_0px_#000]">시각적 퍼포먼스</span>를 추구합니다.
+          </p>
+        </motion.div>
+
+        {/* Skills Card */}
+        <motion.div 
+          initial={{ y: 50, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ type: "spring", delay: 0.4 }}
+          className="md:col-span-5 neo-box bg-neo-green rounded-2xl p-8"
+        >
+          <h2 className="text-3xl font-black uppercase mb-6 flex items-center gap-2">
+             Tech Stack <Terminal size={28} strokeWidth={3} />
+          </h2>
+          <div className="flex flex-wrap gap-4">
+            {['React', 'Next.js', 'Tailwind', 'AI Prompts', 'Figma', 'TypeScript'].map((skill, i) => (
+              <span key={i} className="neo-box bg-white px-4 py-2 font-bold text-sm uppercase rounded-md shadow-[3px_3px_0px_#000] rotate-[-2deg] hover:rotate-[2deg] transition-transform cursor-default">
+                {skill}
+              </span>
+            ))}
+          </div>
+        </motion.div>
+
+      </div>
+      
+      {/* Social Bottom */}
+      <motion.div 
+        initial={{ y: 50, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ type: "spring", delay: 0.5 }}
+        className="mt-10 flex gap-4 w-full flex-wrap"
+      >
+        <a href="#" className="flex-1 neo-box neo-box-hover bg-white flex items-center justify-center p-4 rounded-xl text-black">
+          <GithubIcon className="w-8 h-8" />
+        </a>
+        <a href="#" className="flex-1 neo-box neo-box-hover bg-neo-yellow flex items-center justify-center p-4 rounded-xl text-black">
+          <TwitterIcon className="w-8 h-8" />
+        </a>
+        <a href="#" className="flex-1 neo-box neo-box-hover bg-neo-pink flex items-center justify-center p-4 rounded-xl text-black">
+          <Mail className="w-8 h-8" strokeWidth={2.5} />
+        </a>
+      </motion.div>
+
+      {/* Marquee Footer Component */}
+      <div className="fixed bottom-0 left-0 w-full bg-black border-t-4 border-black py-2 overflow-hidden z-20">
+        <div className="whitespace-nowrap flex animate-marquee text-neo-yellow text-xl font-black uppercase">
+           <span className="mr-8">★ AVAILABLE FOR FREELANCE WORK ★ LET'S BUILD SOMETHING AWESOME</span>
+           <span className="mr-8">★ AVAILABLE FOR FREELANCE WORK ★ LET'S BUILD SOMETHING AWESOME</span>
+           <span className="mr-8">★ AVAILABLE FOR FREELANCE WORK ★ LET'S BUILD SOMETHING AWESOME</span>
+           <span className="mr-8">★ AVAILABLE FOR FREELANCE WORK ★ LET'S BUILD SOMETHING AWESOME</span>
+           <span className="mr-8">★ AVAILABLE FOR FREELANCE WORK ★ LET'S BUILD SOMETHING AWESOME</span>
+        </div>
       </div>
 
-      <motion.main 
-        className="relative z-10 w-full max-w-2xl"
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
-      >
-        <div className="relative overflow-hidden rounded-[2.5rem] bg-white/40 dark:bg-zinc-900/40 p-8 sm:p-12 shadow-2xl backdrop-blur-xl ring-1 ring-white/50 dark:ring-white/10 dark:shadow-purple-900/10">
-          
-          <div className="flex flex-col items-center text-center">
-            
-            {/* Avatar Profile Picture */}
-            <motion.div variants={itemVariants} className="relative group mb-6">
-              <div className="absolute -inset-1 rounded-full bg-gradient-to-r from-purple-600 to-blue-600 opacity-75 group-hover:opacity-100 blur transition duration-500"></div>
-              <div className="relative h-32 w-32 rounded-full overflow-hidden ring-4 ring-white dark:ring-zinc-900">
-                <Image 
-                  src="/avatar.png" 
-                  alt="Profile Picture" 
-                  fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-110"
-                />
-              </div>
-            </motion.div>
-
-            {/* Name and Title */}
-            <motion.div variants={itemVariants}>
-              <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-blue-500 mb-2">
-                김해수
-              </h1>
-              <p className="text-lg sm:text-xl font-medium text-slate-600 dark:text-zinc-400 mb-6">
-                Vibe Coding Learner
-              </p>
-            </motion.div>
-            
-            <motion.div variants={itemVariants} className="w-16 h-1.5 rounded-full bg-gradient-to-r from-purple-500 to-blue-500 mb-8" />
-            
-            {/* Bio */}
-            <motion.p variants={itemVariants} className="max-w-md mx-auto text-base sm:text-lg leading-relaxed text-slate-700 dark:text-zinc-300 mb-10 break-keep">
-              안녕하세요! 최신 웹 기술과 디자인을 사랑하는 대학생입니다. 
-              현재 아름답고 인터랙티브한 UI를 구현하는 <strong>바이브 코딩</strong>을 깊게 파고들고 있습니다.
-            </motion.p>
-
-            {/* Skill Pills */}
-            <motion.div variants={itemVariants} className="flex flex-wrap justify-center gap-3 mb-10">
-              <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-slate-100 dark:bg-zinc-800/80 text-sm font-semibold text-slate-700 dark:text-zinc-200 ring-1 ring-black/5 dark:ring-white/10 shadow-sm transition-transform hover:-translate-y-1">
-                <Code2 size={16} className="text-purple-500" /> Web Dev
-              </div>
-              <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-slate-100 dark:bg-zinc-800/80 text-sm font-semibold text-slate-700 dark:text-zinc-200 ring-1 ring-black/5 dark:ring-white/10 shadow-sm transition-transform hover:-translate-y-1">
-                <Terminal size={16} className="text-blue-500" /> CLI Tools
-              </div>
-              <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-slate-100 dark:bg-zinc-800/80 text-sm font-semibold text-slate-700 dark:text-zinc-200 ring-1 ring-black/5 dark:ring-white/10 shadow-sm transition-transform hover:-translate-y-1">
-                <Cpu size={16} className="text-pink-500" /> AI Prompts
-              </div>
-            </motion.div>
-
-            {/* Social Links */}
-            <motion.div variants={itemVariants} className="flex items-center gap-4 sm:gap-6">
-              <a href="#" className="p-3 rounded-2xl bg-white dark:bg-zinc-800 text-slate-600 dark:text-zinc-400 hover:text-purple-600 dark:hover:text-purple-400 hover:scale-110 hover:-translate-y-1 hover:shadow-xl hover:shadow-purple-500/20 transition-all duration-300 ring-1 ring-black/5 dark:ring-white/10">
-                <GithubIcon className="w-6 h-6" />
-              </a>
-              <a href="#" className="p-3 rounded-2xl bg-white dark:bg-zinc-800 text-slate-600 dark:text-zinc-400 hover:text-blue-500 dark:hover:text-blue-400 hover:scale-110 hover:-translate-y-1 hover:shadow-xl hover:shadow-blue-500/20 transition-all duration-300 ring-1 ring-black/5 dark:ring-white/10">
-                <TwitterIcon className="w-6 h-6" />
-              </a>
-              <a href="#" className="p-3 rounded-2xl bg-white dark:bg-zinc-800 text-slate-600 dark:text-zinc-400 hover:text-blue-700 dark:hover:text-blue-500 hover:scale-110 hover:-translate-y-1 hover:shadow-xl hover:shadow-blue-600/20 transition-all duration-300 ring-1 ring-black/5 dark:ring-white/10">
-                <LinkedinIcon className="w-6 h-6" />
-              </a>
-              <a href="#" className="p-3 rounded-2xl bg-white dark:bg-zinc-800 text-slate-600 dark:text-zinc-400 hover:text-pink-500 dark:hover:text-pink-400 hover:scale-110 hover:-translate-y-1 hover:shadow-xl hover:shadow-pink-500/20 transition-all duration-300 ring-1 ring-black/5 dark:ring-white/10">
-                <Mail className="w-6 h-6" />
-              </a>
-            </motion.div>
-
-          </div>
-        </div>
-      </motion.main>
     </div>
   );
 }
 
+/* Custom SVG for Brand Icons */
 function GithubIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg fill="currentColor" viewBox="0 0 24 24" {...props}>
@@ -127,14 +143,6 @@ function TwitterIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg fill="currentColor" viewBox="0 0 24 24" {...props}>
       <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.996 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
-    </svg>
-  )
-}
-
-function LinkedinIcon(props: React.SVGProps<SVGSVGElement>) {
-  return (
-    <svg fill="currentColor" viewBox="0 0 24 24" {...props}>
-      <path fillRule="evenodd" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" clipRule="evenodd" />
     </svg>
   )
 }
