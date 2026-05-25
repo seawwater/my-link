@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { Mail, Code2, Terminal, Cpu, ArrowRight } from "lucide-react";
+import neoAvatar from "../public/neo_avatar.png";
 
 export default function Home() {
   return (
@@ -51,7 +52,7 @@ export default function Home() {
         >
           <div className="relative w-48 h-48 md:w-full md:h-full min-h-[250px] rounded-full border-4 border-black overflow-hidden bg-neo-yellow shadow-[4px_4px_0px_#000]">
             <Image 
-              src="/neo_avatar.png"
+              src={neoAvatar}
               alt="Pop art Avatar"
               fill
               className="object-cover group-hover:scale-110 transition-transform duration-300"
